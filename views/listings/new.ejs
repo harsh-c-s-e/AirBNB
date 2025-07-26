@@ -7,33 +7,33 @@
     <form method="post" action="/listings" novalidate class="needs-validation">
     <div class="mb-3">
         <label for="title" class="form-label">Title</label>
-        <input name="title" type="text" placeholder="Add a catchy Title" class="form-control" required>
+        <input name="list[title]" type="text" placeholder="Add a catchy Title" class="form-control" required>
         <div class="invalid-feedback">Please enter a title</div>
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea name="description" placeholder="Enter brief description" class="form-control" required></textarea>
+        <textarea name="list[description]" placeholder="Enter brief description" class="form-control" required></textarea>
         <div class="invalid-feedback">Please enter a description</div>
     </div>
     <div class="mb-3">
         <label for="image" class="form-label">Image link</label>
-        <input name="image" type="text" placeholder="Enter image url" class="form-control" >
+        <input name="list[image]" type="text" placeholder="Enter image url" class="form-control" >
     </div>
     <div class="row">
     <div class="mb-3 col-md-4">
         <label for="price" class="form-label">Price</label>
-        <input name="price" type="text" placeholder="1999" class="form-control" required>
+        <input name="list[price]" type="text" placeholder="1999" class="form-control" required>
         <div class="invalid-feedback">Please enter a price</div>
     </div>
     <div class="mb-3 col-md-8" >
         <label for="country" class="form-label">Country</label>
-        <input name="country" type="text" placeholder="INDIA" class="form-control" required>
+        <input name="list[country]" type="text" placeholder="INDIA" class="form-control" required>
         <div class="invalid-feedback">Please enter a country</div>
     </div>
     </div>
     <div class="mb-3">
         <label for="location" class="form-label">Location</label>
-        <input name="location" type="text" placeholder="Jabalpur,Madhya Pradesh" class="form-control" required>
+        <input name="list[location]" type="text" placeholder="Jabalpur,Madhya Pradesh" class="form-control" required>
         <div class="invalid-feedback">Please enter a location</div> 
     </div>
     <button class="btn btn-dark add-btn">Add</button>
