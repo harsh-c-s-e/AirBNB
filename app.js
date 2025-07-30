@@ -8,6 +8,7 @@ const mongoose=require("mongoose");
 const path=require("path");
 const methodOverride= require("method-override");
 const ejsMate = require("ejs-mate");
+const listing = require("./models/listing.js");
 const ExpressError = require("./utils/ExpressError.js");
 const session = require("express-session");
 const flash = require("connect-flash");
@@ -49,10 +50,6 @@ const sessionOptions = {
     }
 };
 
-app.get('/',(req,res)=>{
-    res.send("hi i m root");
-});
-
 app.use(session(sessionOptions));
 app.use(flash());
 
@@ -68,6 +65,33 @@ app.use((req,res,next)=>{
     res.locals.error=req.flash("error");
     res.locals.currUser = req.user;
     next();
+});
+
+app.get("/listings/search", async (req, res) => {
+    let { location } = req.query;
+
+    if (!location || !location.trim()) {
+        req.flash("error", "Please enter something to search");
+        return res.redirect("/listings");
+    }
+
+    location = location.trim().replace(/\s+/g, " "); // Clean spaces
+
+    try {
+        const listings = await listing.find({
+            $or: [
+                { location: { $regex: location, $options: "i" } },
+                { title: { $regex: location, $options: "i" } },
+                { description: { $regex: location, $options: "i" } }
+            ]
+        });
+
+        res.render("listings/searchResults", { listings, location });
+    } catch (err) {
+        console.error(err);
+        req.flash("error", "Something went wrong while searching");
+        res.redirect("/listings");
+    }
 });
 
 app.use("/listings",listingRouter);
