@@ -97,6 +97,7 @@ app.get("/listings/search", async (req, res) => {
             $or: [
                 { location: { $regex: location, $options: "i" } },
                 { title: { $regex: location, $options: "i" } },
+                { country: { $regex: location, $options: "i" } },
                 { description: { $regex: location, $options: "i" } }
             ]
         });
@@ -107,6 +108,16 @@ app.get("/listings/search", async (req, res) => {
         req.flash("error", "Something went wrong while searching");
         res.redirect("/listings");
     }
+});
+
+// Privacy Page
+app.get("/privacy", (req, res) => {
+    res.render("privacy.ejs");
+});
+
+// Terms Page
+app.get("/terms", (req, res) => {
+    res.render("terms.ejs");
 });
 
 app.use("/listings",listingRouter);

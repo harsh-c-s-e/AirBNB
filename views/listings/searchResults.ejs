@@ -3,21 +3,25 @@
 
 <div class="row">
   <% if (listings.length > 0) { %>
-    <% listings.forEach(list => { %>
-      <div class="col-4 mb-3">
-        <a href="/listings/<%= list._id %>" class="text-decoration-none text-dark">
-        <div class="card h-100" style="cursor: pointer;">
-            <img src="<%= list.image.url %>" class="card-img-top card-img-fixed" alt="<%= list.title %>" style="height: 200px; object-fit: cover;">
-            <div class="card-body">
-            <h5 class="card-title"><%= list.title %></h5>
-            <p class="card-text"><%= list.location %></p>
-            <p class="card-text"> &#x20b9; <%= list.price.toLocaleString('en-IN') %>/night </p>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+      <% listings.forEach(list => { %>
+        <div class="col">
+          <a href="/listings/<%= list._id %>" class="text-decoration-none text-dark">
+            <div class="card h-100" style="cursor: pointer;">
+              <img src="<%= list.image.url %>" class="card-img-top" alt="<%= list.title %>" style="height: 200px; object-fit: cover;">
+              <div class="card-body">
+                <h5 class="card-title"><%= list.title %></h5>
+                <p class="card-text"><%= list.location %></p>
+                <p class="card-text"> &#x20b9; <%= list.price.toLocaleString('en-IN') %>/night </p>
+              </div>
             </div>
+          </a>
         </div>
-        </a>
-      </div>
-    <% }) %>
+      <% }) %>
+    </div>
   <% } else { %>
-    <p>No listings found for this location.</p>
+    <div class="col-12">
+      <p>No listings found for this location.</p>
+    </div>
   <% } %>
 </div>

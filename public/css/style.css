@@ -2,7 +2,8 @@ body{
     /* background-color: #FFF2EB !important; */
     display: flex;
     flex-direction: column;
-    height: 100vh;
+    min-height: 100vh;
+    /* padding-top:5.5rem; */
 }
 .container{
     flex: 1;
@@ -10,7 +11,7 @@ body{
 
 /* Navbar */
 .navbar{
-    height:5rem;
+    /* height:5rem; */
     background-color: white;
 }
 .fa-compass{
@@ -100,4 +101,31 @@ body{
 .show-card{
     padding-left: 0;
     padding-right: 0;
+}
+.main-nav {
+    z-index: 1050; /* Ensures navbar is on top */
+}
+
+
+/* For tablets and smaller devices */
+@media (max-width: 768px) {
+    h3 {
+        font-size: 1.5rem;
+    }
+    .navbar-collapse.show {
+        background-color: #f8f9fa;
+        padding: 0 1rem 1rem 1rem;
+        border-radius: 0 0 0.25rem 0.25rem;
+    }
+    .card-body p {
+        font-size: 0.9rem;
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 576px) {
+    /* Example: Adjust form layout */
+    .needs-validation {
+        padding: 1rem;
+    }
 }

@@ -1,7 +1,7 @@
 <% layout("/layouts/boilerplate") %>
 <body>
-    <div class="row">
-        <div class="col-8 offset-2">
+    <div class="row mt-3">
+        <div class="col-md-8 offset-md-2">
     <h3>Edit your listing</h3>
     <form method="POST" action="/listings/<%=list._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
         <div class="mb-3">
@@ -16,7 +16,7 @@
     </div>
     <div class="mb-3" >
         Original Image <br>
-        <img src="<%=originalImageUrl%>" style="width:250px; height:300px; object-fit:cover;">
+        <img src="<%=originalImageUrl%>" class="img-fluid" style="max-height: 300px; object-fit: cover;">
     </div>
     <div class="mb-3" >
         <label for="image" class="form-label">Upload New Image</label>
@@ -41,9 +41,7 @@
         <div class="invalid-feedback">Please enter a location</div>
     </div>
     
-    <button class="btn btn-dark edit-btn">Edit</button>
+    <button class="btn btn-dark edit-btn mb-3">Edit</button>
     </form>
         </div>
-    </div>  
-    <!-- <script src="/js/script.js"></script>   -->
-</body>
+    </div>
